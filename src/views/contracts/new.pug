@@ -2,6 +2,6 @@ h1 new contract #{message}
 
 div
   form(action="/contracts/create" method="post")
-    textarea#contract(name="bytecode", cols="300", rows="50", placeholder="bytecode" ) #{bytecode}
-    textarea#contract(name="interface", cols="300", rows="50", placeholder="interface") #{interface}
+    textarea#contract(name="bytecode", cols="300", rows="20", placeholder="bytecode" ) #{bytecode}
+    textarea#contract(name="interface", cols="300", rows="20", placeholder="interface") #{interface}
     button(type="submit") Submit
