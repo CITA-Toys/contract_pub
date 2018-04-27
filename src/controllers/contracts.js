@@ -13,19 +13,23 @@ const contract = {
     await ctx.render('contracts/new', {
       bytecode,
       interface,
+      message: '',
     })
   },
 
   create: async (ctx, next) => {
     const { bytecode, interface } = ctx.request.body
-    deployer({
+    const ins = await deployer({
       bytecode,
       interface,
     })
 
+    console.log('contract address: ' + ins.address)
+
     await ctx.render('contracts/new', {
       bytecode,
       interface,
+      message: `at ${ins.address}`,
     })
   },
 }
