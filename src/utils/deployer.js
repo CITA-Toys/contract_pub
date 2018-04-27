@@ -95,7 +95,7 @@ const storeAbiToBlockchain = (contract, abi) => {
 module.exports = contract_code => {
   return new Promise((resolve, reject) => {
     const bytecode = contract_code.bytecode
-    const abi = JSON.parse(contract_code.interface)
+    const abi = JSON.parse(contract_code.interface.replace(/\\/, ''))
     const contract = web3.eth.contract(abi)
     contractUtils.initBlockNumber(web3, function(params) {
       commonParams = params

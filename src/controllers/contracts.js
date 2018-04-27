@@ -20,7 +20,7 @@ const contract = {
   create: async (ctx, next) => {
     const { bytecode, interface } = ctx.request.body
     try {
-      JSON.parse(interface)
+      JSON.parse(interface.replace(/\\/, ''))
     } catch (err) {
       return await ctx.render('contracts/new', {
         bytecode,
