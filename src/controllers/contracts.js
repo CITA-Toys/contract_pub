@@ -47,20 +47,31 @@ const contract = {
   },
   attack: async (ctx, next) => {
     let {
-      rounds = 10000
+      rounds = 100
     } = ctx.params
-    let contracts = []
+    const txs = Array.from({
+      length: rounds
+    })
 
-    while (rounds) {
-      console.log(`remaining ${rounds}`)
-      deployer({
+    const contracts = await Promise.all(txs.map(tx => {
+      return deployer({
         bytecode: _bytecode,
         interface: _interface,
-      }).then(ins => contracts.push(ins.address)).catch(err => console.error(err))
-      rounds--
-    }
+      }).then(ins => ins.address).catch(err => err.message)
+    }))
 
-    return (ctx.body = `Attack Finished, contracts are at ${contracts.join()}`)
+
+
+    // while (rounds) {
+    //   console.log(`remaining ${rounds}`)
+    //   deployer({
+    //     bytecode: _bytecode,
+    //     interface: _interface,
+    //   }).then(ins => contracts.push(ins.address)).catch(err => console.error(err))
+    //   rounds--
+    // }
+
+    return (ctx.body = `Attack Finished, contracts are at:\n${contracts.join(',\n')}`)
   },
 }
 module.exports = contract
