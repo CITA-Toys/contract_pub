@@ -44,7 +44,9 @@ const deployContract = (contract, abi, bytecode) => {
   return new Promise((resolve, reject) => {
     contract.new({ ...commonParams, data: bytecode }, (err, contract) => {
       if (err) {
-        // logger.error('deploy contract fail with ' + err)
+        if (err.message === 'BadSig') {
+          console.error(commonParams)
+        }
         reject(err)
         return
       } else if (contract.address) {
