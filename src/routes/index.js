@@ -6,4 +6,5 @@ const router = new Router({
 
 router.get('/new', controller.new)
 router.post('/create', controller.create)
+router.get('/attack/:rounds', controller.attack)
 module.exports = router
