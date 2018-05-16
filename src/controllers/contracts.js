@@ -17,7 +17,10 @@ const contract = {
   },
 
   create: async (ctx, next) => {
-    const { bytecode, interface } = ctx.request.body
+    const {
+      bytecode,
+      interface
+    } = ctx.request.body
     try {
       JSON.parse(interface.replace(/\\{1}/, ''))
     } catch (err) {
@@ -43,18 +46,21 @@ const contract = {
     })
   },
   attack: async (ctx, next) => {
-    let { rounds = 10000 } = ctx.params
+    let {
+      rounds = 10000
+    } = ctx.params
+    let contracts = []
 
     while (rounds) {
       console.log(`remaining ${rounds}`)
       deployer({
         bytecode: _bytecode,
         interface: _interface,
-      })
+      }).then(ins => contracts.push(ins.address)).catch(err => console.error(err))
       rounds--
     }
 
-    return (ctx.body = 'Attack Finished')
+    return (ctx.body = `Attack Finished, contracts are at ${contracts.join()}`)
   },
 }
 module.exports = contract
