@@ -7,7 +7,8 @@ const contractUtils = require('./contract_utils')
 const utils = require('./utils')
 
 // const SERVER = 'http://39.104.94.244:1301'
-const SERVER = 'http://47.75.129.215:1337'
+// const SERVER = 'http://47.75.129.215:1337'
+const SERVER = 'http://121.196.200.225:1337'
 
 const sweb3 = new sWeb3(SERVER)
 
