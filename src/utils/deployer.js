@@ -25,31 +25,11 @@ const to = account.address
 
 let commonParams = {}
 
-// async function deployContract(contract, abi, bytecode) {
-//   contract.new({ ...commonParams, data: bytecode }, (err, contract) => {
-//     if (err) {
-//       // logger.error('deploy contract fail with ' + err)
-//       return
-//     } else if (contract.address) {
-//       myContract = contract
-//       // logger.error('contract address: ' + myContract.address)
-//       console.log('contract addrss: ' + myContract.address)
-//       storeAbiToBlockchain(myContract.address, JSON.stringify(abi))
-
-//       callMethodContract(myContract)
-//     }
-//   })
-// }
-
 const deployContract = (contract, abi, bytecode) => {
   return new Promise((resolve, reject) => {
     contract.new({ ...commonParams, data: bytecode }, (err, contract) => {
       if (err) {
-        if (err.message === 'BadSig') {
-          console.error(commonParams)
-        }
         reject(err)
-        return
       } else if (contract.address) {
         myContract = contract
         resolve(myContract)
@@ -93,7 +73,7 @@ const storeAbiToBlockchain = (contract, abi) => {
         }
       },
     )
-  })
+  }).catch(err => console.error(err))
 }
 
 module.exports = contract_code => {
@@ -102,7 +82,7 @@ module.exports = contract_code => {
     const abi = JSON.parse(contract_code.interface.replace(/\\/, ''))
     const contract = web3.eth.contract(abi)
     contractUtils.initBlockNumber(web3, function(params) {
-      commonParams = params
+      commonParams = { ...params, chainId: 237932729 }
       deployContract(contract, abi, bytecode)
         .then(ins => {
           console.log(ins.address)
