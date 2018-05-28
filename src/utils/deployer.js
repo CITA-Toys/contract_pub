@@ -82,7 +82,7 @@ module.exports = contract_code => {
     const abi = JSON.parse(contract_code.interface.replace(/\\/, ''))
     const contract = web3.eth.contract(abi)
     contractUtils.initBlockNumber(web3, function(params) {
-      commonParams = { ...params, chainId: 237932729 }
+      commonParams = { ...params, chainId: 0 }
       deployContract(contract, abi, bytecode)
         .then(ins => {
           console.log(ins.address)
