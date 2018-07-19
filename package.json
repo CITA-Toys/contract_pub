@@ -13,7 +13,10 @@
     "typescript": "^2.8.3"
   },
   "dependencies": {
+    "@nervos/web3": "^0.17.33",
+    "chalk": "^2.4.1",
     "cita-web3": "^0.5.7",
+    "dotenv": "^6.0.0",
     "koa": "^2.5.1",
     "koa-body": "^2.5.0",
     "koa-router": "^7.4.0",

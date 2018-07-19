@@ -1,97 +1,72 @@
-const fs = require('fs')
-const path = require('path')
-const sWeb3 = require('web3')
-// const Web3 = require('./web3')
-const Web3 = require('cita-web3')
-const contractUtils = require('./contract_utils')
-const utils = require('./utils')
+const Nervos = require('@nervos/web3').default
+const chalk = require('chalk')
+const {
+  privateKey,
+  chain
+} = require('../config/chain')
 
-// const SERVER = 'http://39.104.94.244:1301'
-const SERVER = 'http://47.75.129.215:1337'
-// const SERVER = 'http://121.196.200.225:1337'
+const SERVER = chain
+const nervos = Nervos(SERVER)
 
-const sweb3 = new sWeb3(SERVER)
+const account = nervos.eth.accounts.privateKeyToAccount(privateKey)
 
-const web3 = new Web3(new Web3.providers.HttpProvider(SERVER))
-
-const account = sweb3.eth.accounts.create()
-
-// const code = require('./contract_code')[':FileManage']
-
-const from = account.address
+const transaction = {
+  from: '0xb4061fA8E18654a7d51FEF3866d45bB1DC688717',
+  privateKey: account.privateKey,
+  nonce: 999999,
+  quota: 1000000,
+  chainId: 1,
+  version: 0,
+  value: '0x0'
+};
 const abiTo = 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
-
-const to = account.address
-
-let commonParams = {}
-
-const deployContract = (contract, abi, bytecode) => {
-  return new Promise((resolve, reject) => {
-    contract.new({ ...commonParams, data: bytecode }, (err, contract) => {
-      if (err) {
-        reject(err)
-      } else if (contract.address) {
-        myContract = contract
-        resolve(myContract)
-      }
-    })
-  })
-    .then(async contract => {
-      return await storeAbiToBlockchain(myContract, JSON.stringify(abi))
-    })
-    .then(contract => {
-      return contract
-    })
-    .catch(err => {
-      throw err
-    })
-}
 
 /**
  * 上传abi至区块链
  * @param {string} abi
  */
-const storeAbiToBlockchain = (contract, abi) => {
-  const address = contract.address
-  var hex = utils.fromUtf8(abi)
+const storeAbiToBlockchain = (contractAddress, abi) => {
+  console.log(chalk.blue('Start to store abi'))
+  console.log(chalk.yellow(`contract address: ${contractAddress}`))
+  const address = contractAddress
+  var hex = nervos.utils.fromUtf8(JSON.stringify(abi))
   if (hex.slice(0, 2) == '0x') hex = hex.slice(2)
 
   var code = (address.slice(0, 2) == '0x' ? address.slice(2) : address) + hex
+  console.log('code')
+  console.log(chalk.blue(code))
   return new Promise((resolve, reject) => {
-    web3.eth.sendTransaction(
-      {
-        ...commonParams,
+    return nervos.appchain.getBlockNumber().then(current => {
+      return nervos.appchain.sendTransaction({
+        ...transaction,
+        validUntilBlock: current + 88,
         to: abiTo,
         data: code,
-      },
-      function(err, res) {
-        if (err) {
-          reject(err)
-          // logger.error('send transaction error: ' + err)
-        } else {
-          resolve(contract)
-        }
-      },
-    )
+      }).then(res => {
+        console.log(chalk.yellow(JSON.stringify(res)))
+        resolve(res)
+      }).catch(err => reject(err))
+
+    })
   }).catch(err => console.error(err))
 }
+
 
 module.exports = contract_code => {
   return new Promise((resolve, reject) => {
     const bytecode = contract_code.bytecode
     const abi = JSON.parse(contract_code.interface.replace(/\\/, ''))
-    const contract = web3.eth.contract(abi)
-    contractUtils.initBlockNumber(web3, function(params) {
-      commonParams = { ...params, chainId: 0 }
-      deployContract(contract, abi, bytecode)
-        .then(ins => {
-          console.log(ins.address)
-          resolve(ins)
+    // const contract = new nervos.appchain.Contract(abi)
+    return nervos.appchain.deploy(bytecode, transaction).then(contractResult => {
+      if (contractResult && contractResult.contractAddress) {
+        const contract = new nervos.appchain.Contract(abi, contractResult.contractAddress)
+        storeAbiToBlockchain(contractResult.contractAddress, abi)
+        resolve({
+          contractResult,
+          contract,
         })
-        .catch(err => {
-          console.log(err)
-          reject(err)
-        })
+      }
+      reject(contractResult)
     })
   })
 }

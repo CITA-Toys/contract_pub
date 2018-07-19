@@ -25,7 +25,7 @@
 
 var sha3 = require('../utils/sha3.js');
 // var secp256k1 = require('secp256k1');
-var blockchain  = require('../cita/blockchain_pb.js');
+var blockchain = require('../cita/blockchain_pb.js');
 var utils = require('../utils/utils');
 var config = require('../utils/config');
 var Iban = require('./iban');
@@ -74,8 +74,8 @@ var inputBlockNumberFormatter = function (blockNumber) {
  * @method inputCallFormatter
  * @param {Object} transaction options
  * @returns object
-*/
-var inputCallFormatter = function (options){
+ */
+var inputCallFormatter = function (options) {
 
     options.from = options.from || config.defaultAccount;
 
@@ -89,7 +89,7 @@ var inputCallFormatter = function (options){
 
     ['gasPrice', 'gas', 'value', 'nonce'].filter(function (key) {
         return options[key] !== undefined;
-    }).forEach(function(key){
+    }).forEach(function (key) {
         options[key] = utils.fromDecimal(options[key]);
     });
 
@@ -102,8 +102,8 @@ var inputCallFormatter = function (options){
  * @method inputTransactionFormatter
  * @param {Object} transaction options
  * @returns object
-*/
-var inputTransactionFormatter = function (options){
+ */
+var inputTransactionFormatter = function (options) {
 
     options.from = options.from || config.defaultAccount;
     options.from = inputAddressFormatter(options.from);
@@ -114,7 +114,7 @@ var inputTransactionFormatter = function (options){
 
     ['gasPrice', 'gas', 'value', 'nonce'].filter(function (key) {
         return options[key] !== undefined;
-    }).forEach(function(key){
+    }).forEach(function (key) {
         options[key] = utils.fromDecimal(options[key]);
     });
 
@@ -128,8 +128,8 @@ var inputTransactionFormatter = function (options){
  * @method inputTransactionFormatterCita
  * @param {Object} transaction options
  * @returns protobuf of signed transaction
-*/
-var inputTransactionFormatterCita = function (options){
+ */
+var inputTransactionFormatterCita = function (options) {
     logger.debug("transaction parameter options: " + JSON.stringify(options));
     // create Transaction
     var tx = new blockchain.Transaction();
@@ -158,11 +158,13 @@ var inputTransactionFormatterCita = function (options){
     tx.setData(new Uint8Array(Buffer.from(options.data, "hex")));
 
     var msg = tx.serializeBinary();
-    var hex = msg.reduce(function(r,a) {
+    var hex = msg.reduce(function (r, a) {
         return r.concat(a.toString(16).padStart(2, '0'));
     }, "");
-    
-    var hash = sha3(hex, {encoding: 'hex'});
+
+    var hash = sha3(hex, {
+        encoding: 'hex'
+    });
 
     // var sign1 = secp256k1.sign(new Buffer(hash.toString(), 'hex'), new Buffer(options.privkey, 'hex'));
     // var bytes1 =  new Uint8Array(65);
@@ -181,7 +183,7 @@ var inputTransactionFormatterCita = function (options){
     if (sign_s.length == 63) sign_s = "0" + sign_s;
     var signature = sign_r + sign_s;
     var sign_buffer = new Buffer(signature, "hex");
-    var bytes =  new Uint8Array(65);
+    var bytes = new Uint8Array(65);
     bytes.set(sign_buffer);
     bytes[64] = sign.recoveryParam;
 
@@ -194,7 +196,7 @@ var inputTransactionFormatterCita = function (options){
     // get protobuf of UnverifiedTransaction
     var bytes = tx2.serializeBinary();
 
-    var hexstr= bytes.reduce(function(r,a) {
+    var hexstr = bytes.reduce(function (r, a) {
         return r.concat(a.toString(16).padStart(2, '0'));
     }, "");
 
@@ -207,11 +209,11 @@ var inputTransactionFormatterCita = function (options){
  * @method outputTransactionFormatter
  * @param {Object} tx
  * @returns {Object}
-*/
-var outputTransactionFormatter = function (tx){
-    if(tx.blockNumber !== null)
+ */
+var outputTransactionFormatter = function (tx) {
+    if (tx.blockNumber !== null)
         tx.blockNumber = utils.toDecimal(tx.blockNumber);
-    if(tx.transactionIndex !== null)
+    if (tx.transactionIndex !== null)
         tx.transactionIndex = utils.toDecimal(tx.transactionIndex);
     tx.nonce = utils.toDecimal(tx.nonce);
     tx.gas = utils.toDecimal(tx.gas);
@@ -226,17 +228,17 @@ var outputTransactionFormatter = function (tx){
  * @method outputTransactionReceiptFormatter
  * @param {Object} receipt
  * @returns {Object}
-*/
-var outputTransactionReceiptFormatter = function (receipt){
-    if(receipt.blockNumber !== null)
+ */
+var outputTransactionReceiptFormatter = function (receipt) {
+    if (receipt.blockNumber !== null)
         receipt.blockNumber = utils.toDecimal(receipt.blockNumber);
-    if(receipt.transactionIndex !== null)
+    if (receipt.transactionIndex !== null)
         receipt.transactionIndex = utils.toDecimal(receipt.transactionIndex);
     receipt.cumulativeGasUsed = utils.toDecimal(receipt.cumulativeGasUsed);
     receipt.gasUsed = utils.toDecimal(receipt.gasUsed);
 
-    if(utils.isArray(receipt.logs)) {
-        receipt.logs = receipt.logs.map(function(log){
+    if (utils.isArray(receipt.logs)) {
+        receipt.logs = receipt.logs.map(function (log) {
             return outputLogFormatter(log);
         });
     }
@@ -250,23 +252,23 @@ var outputTransactionReceiptFormatter = function (receipt){
  * @method outputBlockFormatter
  * @param {Object} block
  * @returns {Object}
-*/
-var outputBlockFormatter = function(block) {
+ */
+var outputBlockFormatter = function (block) {
 
     // transform to number
     block.gasLimit = utils.toDecimal(block.gasLimit);
     block.gasUsed = utils.toDecimal(block.gasUsed);
     block.size = utils.toDecimal(block.size);
     block.timestamp = utils.toDecimal(block.timestamp);
-    if(block.number !== null)
+    if (block.number !== null)
         block.number = utils.toDecimal(block.number);
 
     block.difficulty = utils.toBigNumber(block.difficulty);
     block.totalDifficulty = utils.toBigNumber(block.totalDifficulty);
 
     if (utils.isArray(block.transactions)) {
-        block.transactions.forEach(function(item){
-            if(!utils.isString(item))
+        block.transactions.forEach(function (item) {
+            if (!utils.isString(item))
                 return outputTransactionFormatter(item);
         });
     }
@@ -280,13 +282,13 @@ var outputBlockFormatter = function(block) {
  * @method outputLogFormatter
  * @param {Object} log object
  * @returns {Object} log
-*/
-var outputLogFormatter = function(log) {
-    if(log.blockNumber)
+ */
+var outputLogFormatter = function (log) {
+    if (log.blockNumber)
         log.blockNumber = utils.toDecimal(log.blockNumber);
-    if(log.transactionIndex)
+    if (log.transactionIndex)
         log.transactionIndex = utils.toDecimal(log.transactionIndex);
-    if(log.logIndex)
+    if (log.logIndex)
         log.logIndex = utils.toDecimal(log.logIndex);
 
     return log;
@@ -298,8 +300,8 @@ var outputLogFormatter = function(log) {
  * @method inputPostFormatter
  * @param {Object} transaction object
  * @returns {Object}
-*/
-var inputPostFormatter = function(post) {
+ */
+var inputPostFormatter = function (post) {
 
     // post.payload = utils.toHex(post.payload);
     post.ttl = utils.fromDecimal(post.ttl);
@@ -312,7 +314,7 @@ var inputPostFormatter = function(post) {
     }
 
     // format the following options
-    post.topics = post.topics.map(function(topic){
+    post.topics = post.topics.map(function (topic) {
         // convert only if not hex
         return (topic.indexOf('0x') === 0) ? topic : utils.fromUtf8(topic);
     });
@@ -327,7 +329,7 @@ var inputPostFormatter = function(post) {
  * @param {Object}
  * @returns {Object}
  */
-var outputPostFormatter = function(post){
+var outputPostFormatter = function (post) {
 
     post.expiry = utils.toDecimal(post.expiry);
     post.sent = utils.toDecimal(post.sent);
@@ -344,7 +346,7 @@ var outputPostFormatter = function(post){
     if (!post.topics) {
         post.topics = [];
     }
-    post.topics = post.topics.map(function(topic){
+    post.topics = post.topics.map(function (topic) {
         return utils.toAscii(topic);
     });
 
@@ -364,7 +366,7 @@ var inputAddressFormatter = function (address) {
 };
 
 
-var outputSyncingFormatter = function(result) {
+var outputSyncingFormatter = function (result) {
     if (!result) {
         return result;
     }
@@ -396,4 +398,3 @@ module.exports = {
     outputPostFormatter: outputPostFormatter,
     outputSyncingFormatter: outputSyncingFormatter
 };
-

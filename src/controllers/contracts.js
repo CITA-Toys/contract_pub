@@ -4,12 +4,16 @@ const _bytecode =
 const _interface =
   '[{"constant":true,"inputs":[{"name":"","type":"uint256"}],"name":"allowedMembers","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"file","type":"string"},{"name":"urls","type":"string"}],"name":"addFile","outputs":[{"name":"success","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"file","type":"string"}],"name":"getFileUrls","outputs":[{"name":"urls","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"owner","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"file","type":"string"}],"name":"removeFile","outputs":[{"name":"success","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"","type":"uint256"}],"name":"files","outputs":[{"name":"","type":"bytes32"}],"payable":false,"stateMutability":"view","type":"function"},{"inputs":[{"name":"_allowedMembers","type":"address[]"}],"payable":false,"stateMutability":"nonpayable","type":"constructor"}]'
 
-setInterval(() => {
-  deployer({
-    bytecode: _bytecode,
-    interface: _interface,
-  }).catch(err => console.error(err.message))
-}, 300)
+// setInterval(() => {
+//   deployer({
+//     bytecode: _bytecode,
+//     interface: _interface,
+//   }).catch(err => console.error(err.message))
+// }, 300)
+deployer({
+  bytecode: _bytecode,
+  interface: _interface,
+}).catch(err => console.error(err.message))
 
 const contract = {
   index: (ctx, next) => {
@@ -25,7 +29,10 @@ const contract = {
   },
 
   create: async (ctx, next) => {
-    const { bytecode, interface } = ctx.request.body
+    const {
+      bytecode,
+      interface
+    } = ctx.request.body
     try {
       JSON.parse(interface.replace(/\\{1}/, ''))
     } catch (err) {
@@ -35,8 +42,6 @@ const contract = {
         message: err.message,
       })
     }
-    console.log(bytecode)
-    console.log(interface)
     const ins = await deployer({
       bytecode,
       interface,
@@ -44,16 +49,18 @@ const contract = {
       address: err.message
     })
 
-    console.log('contract address: ' + ins.address)
+    console.log('contract address: ' + ins.contractResult.contractAddress)
 
     await ctx.render('contracts/new', {
       bytecode,
       interface,
-      message: `at ${ins.address}`,
+      message: `at ${ins.contractResult.contractAddress}`,
     })
   },
   attack: async (ctx, next) => {
-    let { rounds = 100 } = ctx.params
+    let {
+      rounds = 100
+    } = ctx.params
     const txs = Array.from({
       length: rounds,
     })
@@ -61,9 +68,9 @@ const contract = {
     const contracts = await Promise.all(
       txs.map(tx => {
         return deployer({
-          bytecode: _bytecode,
-          interface: _interface,
-        })
+            bytecode: _bytecode,
+            interface: _interface,
+          })
           .then(ins => ins.address)
           .catch(err => err.message)
       }),
