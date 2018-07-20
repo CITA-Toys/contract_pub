@@ -3,3 +3,4 @@ node_modules
 .vscode
 .env
 yarn-error.log
+/src/config/private.js

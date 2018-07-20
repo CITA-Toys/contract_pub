@@ -1,0 +1,11 @@
+div
+    if success
+        div Successful! hash: #{hash}
+    else if alert
+        div=alert
+    form(action="/faucet/getNos" method="post")
+        div Enter your address
+        input(name='address', value=address)
+        input(name='captcha')
+        span !{svg}
+        button(type='submit') Get Nos
