@@ -10,10 +10,11 @@ const _interface =
 //     interface: _interface,
 //   }).catch(err => console.error(err.message))
 // }, 300)
-deployer({
-  bytecode: _bytecode,
-  interface: _interface,
-}).catch(err => console.error(err.message))
+
+// deployer({
+//   bytecode: _bytecode,
+//   interface: _interface,
+// }).catch(err => console.error(err.message))
 
 const contract = {
   index: (ctx, next) => {
