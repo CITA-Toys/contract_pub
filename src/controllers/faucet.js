@@ -3,7 +3,12 @@ const log = require('../log/index')
 const transfer = require('../utils/transfer')
 
 const newCaptcha = async (ctx) => {
-  const cap = svgCap.create()
+  const opts = {
+    color: true,
+    noise: 3,
+    height: 44,
+  }
+  const cap = svgCap.create(opts)
   ctx.session.captcha = cap.text.toLocaleLowerCase()
   return cap.data
 }

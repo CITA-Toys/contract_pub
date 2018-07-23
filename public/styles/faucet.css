@@ -1,0 +1,143 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+}
+
+.center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.fontLittle {
+    font-size: 20px;
+    color: #262a44;
+}
+
+.fontNormal {
+    font-size: 22px;
+}
+
+.mainForm {
+    text-align: center;
+    width: 1000px;
+    max-width: 100%;
+    margin: auto;
+    margin-top: 266px;
+}
+
+.alert {
+    position: absolute;
+    top: 0;
+    width: 1000px;
+    max-width: 100%;
+    min-height: 44px;
+    line-height: 44px;
+    font-size: 16px;
+    border-radius: 4px;
+    word-break: break-word;
+
+    color: #d70606;
+    background-color: rgba(241, 78, 78, 0.3);
+    border: solid 1px rgba(211, 6, 6, 0.4);
+}
+
+.alert.success {
+    color: #10563a;
+    background-color: rgba(78, 241, 179, 0.6);
+    border: solid 1px rgba(6, 211, 170, 0.6);
+}
+
+.mainTitle {
+    font-family: MicrosoftSansSerif;
+    font-size: 48px;
+    text-align: center;
+    color: #262a44;
+    margin-bottom: 100px;
+}
+
+.address, .captcha {
+    width: 668px;
+    max-width: 95%;
+    margin: auto;
+}
+
+.address {
+    display: block;
+    height: 44px;
+
+    border-radius: 2px;
+    border: solid 1px #bdbfca;
+    margin-bottom: 23px;
+}
+
+.captcha {
+    text-align: left;
+    margin-bottom: 100px;
+}
+
+.captchaInput {
+    width: 100px;
+    height: 44px;
+    border-radius: 2px;
+    border: solid 1px #bdbfca;
+}
+
+.captchaImg {
+    display: inline-block;
+    margin-left: 15px;
+    vertical-align: top;
+}
+
+.captchaImg svg {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.submit {
+    width: 183px;
+    height: 44px;
+    border-radius: 2px;
+    background-color: #262a44;
+    font-family: MicrosoftSansSerif;
+    text-align: center;
+    color: #ffffff;
+}
+
+@media (max-device-width: 1080px), (max-width: 800px) {
+    .mainForm {
+        margin-top: 110px;
+    }
+
+    .alert {
+        font-size: 12px;
+        text-align: left;
+        min-height: 34px;
+        line-height: 34px;
+        padding-left: 43px;
+        border-left: none;
+        border-right: none;
+        border-radius: 0;
+    }
+
+    .mainTitle {
+        font-size: 24px;
+    }
+
+    .fontLittle {
+        font-size: 12px;
+    }
+
+    .fontNormal {
+        font-size: 16px;
+    }
+
+    .submit {
+        width: 150px;
+        height: 36px;
+    }
+}
