@@ -10,35 +10,35 @@ const config = require('./config/koa')
 
 const app = new Koa()
 
-const test = () => {
-  app.use(async (ctx, next) => {
-    const start = Date.now()
-    await next()
-    const ms = Date.now() - start
-    ctx.set('X-Response-Time', `${ms}ms`)
-    log(1, start)
-  })
-
-// logger
-
-  app.use(async (ctx, next) => {
-    const start = Date.now()
-    await next()
-    const ms = Date.now() - start
-    log(2, start)
-    console.log(`${ctx.method} ${ctx.url} - ${ms}`)
-  })
-
-// response
-
-  app.use(async ctx => {
-    const start = Date.now()
-    log(3, start)
-    ctx.body = 'Hello World'
-  })
-}
-
-// test()
+// const test = () => {
+//   app.use(async (ctx, next) => {
+//     const start = Date.now()
+//     await next()
+//     const ms = Date.now() - start
+//     ctx.set('X-Response-Time', `${ms}ms`)
+//     log(1, start)
+//   })
+//
+// // logger
+//
+//   app.use(async (ctx, next) => {
+//     const start = Date.now()
+//     await next()
+//     const ms = Date.now() - start
+//     log(2, start)
+//     console.log(`${ctx.method} ${ctx.url} - ${ms}`)
+//   })
+//
+// // response
+//
+//   app.use(async ctx => {
+//     const start = Date.now()
+//     log(3, start)
+//     ctx.body = 'Hello World'
+//   })
+// }
+//
+// // test()
 
 const dev = () => {
   app.keys = config.keys
