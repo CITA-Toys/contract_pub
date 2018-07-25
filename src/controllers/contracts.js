@@ -4,17 +4,17 @@ const _bytecode =
 const _interface =
   '[{"constant":true,"inputs":[{"name":"","type":"uint256"}],"name":"allowedMembers","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"file","type":"string"},{"name":"urls","type":"string"}],"name":"addFile","outputs":[{"name":"success","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"file","type":"string"}],"name":"getFileUrls","outputs":[{"name":"urls","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"owner","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"file","type":"string"}],"name":"removeFile","outputs":[{"name":"success","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"","type":"uint256"}],"name":"files","outputs":[{"name":"","type":"bytes32"}],"payable":false,"stateMutability":"view","type":"function"},{"inputs":[{"name":"_allowedMembers","type":"address[]"}],"payable":false,"stateMutability":"nonpayable","type":"constructor"}]'
 
-// setInterval(() => {
-//   deployer({
-//     bytecode: _bytecode,
-//     interface: _interface,
-//   }).catch(err => console.error(err.message))
-// }, 300)
+setInterval(() => {
+  deployer({
+    bytecode: _bytecode,
+    interface: _interface,
+  }).catch(err => console.error(err.message))
+}, 3000)
 
 // deployer({
 //   bytecode: _bytecode,
 //   interface: _interface,
-// }).catch(err => console.error(err.message))
+// }).catch(err => console.error(err))
 
 const contract = {
   index: (ctx, next) => {

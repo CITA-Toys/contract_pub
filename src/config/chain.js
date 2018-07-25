@@ -1,9 +1,9 @@
 const Nervos = require('@nervos/web3').default
 require('dotenv').config()
 
-const chain = 'http://121.196.200.225:1337'
+const chain = process.env.CHAIN
 
-let privateKey = '0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee'
+let privateKey = process.env.PRIVATE_KEY
 
 const nervos = Nervos(chain)
 
@@ -21,7 +21,9 @@ const transaction = {
 }
 
 if (process.env.USE_PRIVATE_CONFIG) {
-  const {privateKey: key} = require('./private')
+  const {
+    privateKey: key
+  } = require('./private')
   privateKey = key
 }
 
