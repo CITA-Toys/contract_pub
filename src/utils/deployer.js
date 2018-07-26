@@ -19,21 +19,23 @@ const transaction = {
   version: 0,
   value: '0x0'
 };
-module.exports = contract_code => {
+module.exports = (contract_code) => {
   return new Promise((resolve, reject) => {
     const bytecode = contract_code.bytecode
+    const args = contract_code.args
+    console.log(args)
     const abi = JSON.parse(contract_code.interface.replace(/\\/, ''))
     nervos.appchain.getBlockNumber().then(currentHeight => {
       transaction.validUntilBlock = +currentHeight + 88
       new nervos.appchain.Contract(abi).deploy({
         data: bytecode,
-        arguments: [
-          ['0x55dB190018f4D296aE7DAF31b6BCC1548363e3C4']
-        ]
+        arguments: [args]
       }).send(transaction).then(txResult => {
         nervos.listeners.listenToTransactionReceipt(txResult.hash).then(receipt => {
           console.log(receipt)
-          nervos.appchain.storeAbi(receipt.contractAddress, abi, transaction).then(console.log)
+          if (receipt.contractAddress) {
+            nervos.appchain.storeAbi(receipt.contractAddress, abi, transaction).then(console.log)
+          }
           resolve(receipt)
         })
       })

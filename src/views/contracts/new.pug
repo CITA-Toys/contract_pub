@@ -4,6 +4,10 @@ h1 new contract #{message}
 
 div
   form(action="/contracts/create" method="post")
+    label bytecode
     textarea#contract(name="bytecode", cols="300", rows="20", placeholder="bytecode" ) #{bytecode}
+    label arguments
+    textarea#contract(name="args", cols="300", rows="1", plcaeholder="arguments") #{args}
+    label abi
     textarea#contract(name="interface", cols="300", rows="20", placeholder="interface") #{interface}
     button(type="submit") Submit
