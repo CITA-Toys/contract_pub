@@ -27,7 +27,8 @@ const sendNos = async (ctx, address, captcha) => {
     throw '验证码错误'
   }
 
-  const res = await transfer(address, '0x10')
+  const res = await transfer(address, '0x16777216')
+  log(res)
 
   if (res.status === 'OK') {
     return res

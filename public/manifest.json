@@ -1,4 +1,9 @@
 {
-  "short_name": "Contract Pub",
-  "name": "Contract Pub"
+  "name": "Nervos First App",
+  "blockViewer": "https://etherscan.io/",
+  "chainSet": {
+    "1": "http://121.196.200.225:1337"
+  },
+  "entry": "index.html",
+  "provider": "https://etherscan.io/"
 }
