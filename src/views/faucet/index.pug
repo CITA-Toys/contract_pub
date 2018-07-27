@@ -12,8 +12,10 @@ block content
             div.alert
                 div.alertText=alert
         div.mainTitle Appchain Festhet Faucet
-        input.fontLittle.address(name='address', value=address, placeholder='Social network URL containing your E thereum address…')
+        input#id-input-address.fontLittle.address(name='address', value=address, placeholder='Social network URL containing your E thereum address…')
         div.captcha
             input.fontLittle.captchaInput(name='captcha')
             span.captchaImg !{svg}
         button.fontNormal.submit(type='submit') GET
+block scripts
+    script(src='/scripts/faucet.js')
