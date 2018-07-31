@@ -8,7 +8,6 @@ const log = require('./log/index')
 const router = require('./routes/index')
 const config = require('./config/koa')
 
-const app = new Koa()
 
 // const test = () => {
 //   app.use(async (ctx, next) => {
@@ -40,7 +39,9 @@ const app = new Koa()
 //
 // // test()
 
-const dev = () => {
+const appinited = () => {
+  const app = new Koa()
+
   app.keys = config.keys
 
   app.use(session(config.session, app))
@@ -57,13 +58,19 @@ const dev = () => {
   app.use(router.routes())
 
   app.use(router.allowedMethods())
+
+  return app
 }
 
-const main = () => {
-  dev()
+const appstart = (app) => {
   app.listen(8095, () => {
     log('start server')
   })
+}
+
+const main = () => {
+  const app = appinited()
+  appstart(app)
 }
 
 main()
