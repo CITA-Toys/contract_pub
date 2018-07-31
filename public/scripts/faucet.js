@@ -1,7 +1,7 @@
 var input = document.getElementById('id-input-address')
 
 try {
-  input.value = neuron.getAccount()
+  input.value = neuronAccount.getAccount()
 } catch (err) {
   console.error(err)
 }
