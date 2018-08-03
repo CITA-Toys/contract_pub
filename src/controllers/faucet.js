@@ -26,10 +26,7 @@ const index = async (ctx, next) => {
 }
 
 const checkAddress = (address) => {
-  let size = address.length
-  if (address.startsWith('0x')) {
-    size -= 2
-  }
+  address = address.replace(/^0x/, '')
   if (size !== 40) {
     throw "There's wrong with the length of address"
   }
