@@ -15,6 +15,9 @@ const newCaptcha = async (ctx) => {
 
 const renderIndex = async (ctx, params = {}) => {
   params.svg = await newCaptcha(ctx)
+  params.inputPlaceholder = 'Enter your account address here'
+  params.mainTitle = 'Nervos AppChain Testhet Faucet'
+  params.buttonLabel = 'Get Testnet Token'
   return await ctx.render('faucet/index', params)
 }
 
@@ -45,10 +48,13 @@ const getNos = async (ctx, next) => {
 
   try {
     const res = await sendNos(ctx, address, captcha)
-    await renderIndex(ctx, { success: true, hash: res.hash })
+    // 成功
+    const alert = `Successful! hash: ${res.hash}`
+    await renderIndex(ctx, { success: true, alert })
   } catch (err) {
     // 地址错误或者其他
-    await renderIndex(ctx, { address, alert: err })
+    const alert = err
+    await renderIndex(ctx, { address, alert })
   }
 }
 
