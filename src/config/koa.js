@@ -17,7 +17,7 @@ const session = {
   renew: false /** (boolean) renew session when session is nearly expired, so we can always keep user logged in. (default is false)*/,
 }
 
-let keys = JSON.parse(process.env.APP_KEYS)
+let keys = process.env.APP_KEYS.split(',')
 
 if (process.env.USE_PRIVATE_CONFIG) {
   const { sessionKey, appKeys } = require('./private')
