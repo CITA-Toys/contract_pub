@@ -16,7 +16,7 @@ const newCaptcha = async (ctx) => {
 const renderIndex = async (ctx, params = {}) => {
   params.svg = await newCaptcha(ctx)
   params.inputPlaceholder = 'Enter your account address here'
-  params.mainTitle = 'Nervos AppChain Testhet Faucet'
+  params.mainTitle = 'Nervos AppChain Testnet Faucet'
   params.buttonLabel = 'Get Testnet Token'
   return await ctx.render('faucet/index', params)
 }
@@ -25,14 +25,26 @@ const index = async (ctx, next) => {
   await renderIndex(ctx)
 }
 
+const checkAddress = (address) => {
+  let size = address.length
+  if (address.startsWith('0x')) {
+    size -= 2
+  }
+  if (size !== 40) {
+    throw "There's wrong with the length of address"
+  }
+}
+
 const sendNos = async (ctx, address, captcha) => {
+  // checkAddress(address)
+
   if (ctx.session.captcha !== captcha) {
     // 验证码错误
     throw 'Verification Code Errors !'
   }
 
   const res = await transfer(address, '0x16777216')
-  log(res)
+  // log('transfer res', res)
 
   if (res.status === 'OK') {
     return res
