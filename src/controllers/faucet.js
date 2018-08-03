@@ -24,7 +24,8 @@ const index = async (ctx, next) => {
 
 const sendNos = async (ctx, address, captcha) => {
   if (ctx.session.captcha !== captcha) {
-    throw '验证码错误'
+    // 验证码错误
+    throw 'Verification Code Errors !'
   }
 
   const res = await transfer(address, '0x16777216')
@@ -33,24 +34,21 @@ const sendNos = async (ctx, address, captcha) => {
   if (res.status === 'OK') {
     return res
   } else {
-    log(res)
-    throw '交易失败'
+    throw "There's something wrong with the account address"
   }
 }
 
 const getNos = async (ctx, next) => {
-  let {
-    address,
-    captcha,
-  } = ctx.request.body
+  let { address, captcha } = ctx.request.body
 
   captcha = captcha.toLocaleLowerCase()
 
   try {
     const res = await sendNos(ctx, address, captcha)
-    await renderIndex(ctx, {success: true, hash: res.hash})
+    await renderIndex(ctx, { success: true, hash: res.hash })
   } catch (err) {
-    await renderIndex(ctx, {address, alert: err})
+    // 地址错误或者其他
+    await renderIndex(ctx, { address, alert: err })
   }
 }
 
