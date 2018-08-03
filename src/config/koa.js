@@ -1,7 +1,7 @@
 require('dotenv').config()
 
 const session = {
-  key: 'koa:sess', /** (string) cookie key (default is koa:sess) */
+  key: process.env.APP_SESSION_KEY /** (string) cookie key (default is koa:sess) */,
   /** (number || 'session') maxAge in ms (default is 1 days) */
   /** 'session' will result in a cookie that expires when session/browser is closed */
   /** Warning: If a session cookie is stolen, this cookie will never expire */
@@ -14,13 +14,13 @@ const session = {
   /** (boolean) signed or not (default true) */
   rolling: false,
   /** (boolean) Force a session identifier cookie to be set on every response. The expiration is reset to the original maxAge, resetting the expiration countdown. (default is false) */
-  renew: false, /** (boolean) renew session when session is nearly expired, so we can always keep user logged in. (default is false)*/
+  renew: false /** (boolean) renew session when session is nearly expired, so we can always keep user logged in. (default is false)*/,
 }
 
-let keys = ['自己定个值']
+let keys = JSON.parse(process.env.APP_KEYS)
 
 if (process.env.USE_PRIVATE_CONFIG) {
-  const {sessionKey, appKeys} = require('./private')
+  const { sessionKey, appKeys } = require('./private')
   session.key = sessionKey
   keys = appKeys
 }

@@ -1,10 +1,9 @@
 const Nervos = require('@nervos/web3').default
 require('dotenv').config()
 
-const chain = process.env.CHAIN
+let chain = process.env.CHAIN
 
 let privateKey = process.env.PRIVATE_KEY
-
 const nervos = Nervos(chain)
 
 const account = nervos.eth.accounts.privateKeyToAccount(privateKey)
@@ -22,9 +21,11 @@ const transaction = {
 
 if (process.env.USE_PRIVATE_CONFIG) {
   const {
-    privateKey: key
+    privateKey: key,
+    chain: _chain,
   } = require('./private')
   privateKey = key
+  chain = _chain
 }
 
 module.exports = {
