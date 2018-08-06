@@ -15,6 +15,9 @@ const newCaptcha = async (ctx) => {
 
 const renderIndex = async (ctx, params = {}) => {
   params.svg = await newCaptcha(ctx)
+  params.inputPlaceholder = 'Enter your account address here'
+  params.mainTitle = 'Nervos AppChain Testnet Faucet'
+  params.buttonLabel = 'Get Testnet Token'
   return await ctx.render('faucet/index', params)
 }
 
@@ -22,35 +25,45 @@ const index = async (ctx, next) => {
   await renderIndex(ctx)
 }
 
+const checkAddress = (address) => {
+  address = address.replace(/^0x/, '')
+  if (size !== 40) {
+    throw "There's wrong with the length of address"
+  }
+}
+
 const sendNos = async (ctx, address, captcha) => {
+  // checkAddress(address)
+
   if (ctx.session.captcha !== captcha) {
-    throw '验证码错误'
+    // 验证码错误
+    throw 'Verification Code Errors !'
   }
 
   const res = await transfer(address, '0x16777216')
-  log(res)
+  // log('transfer res', res)
 
   if (res.status === 'OK') {
     return res
   } else {
-    log(res)
-    throw '交易失败'
+    throw "There's something wrong with the account address"
   }
 }
 
 const getNos = async (ctx, next) => {
-  let {
-    address,
-    captcha,
-  } = ctx.request.body
+  let { address, captcha } = ctx.request.body
 
   captcha = captcha.toLocaleLowerCase()
 
   try {
     const res = await sendNos(ctx, address, captcha)
-    await renderIndex(ctx, {success: true, hash: res.hash})
+    // 成功
+    const alert = `Successful! hash: ${res.hash}`
+    await renderIndex(ctx, { success: true, alert })
   } catch (err) {
-    await renderIndex(ctx, {address, alert: err})
+    // 地址错误或者其他
+    const alert = err
+    await renderIndex(ctx, { address, alert })
   }
 }
 

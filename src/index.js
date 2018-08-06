@@ -63,8 +63,9 @@ const appinited = () => {
 }
 
 const appstart = (app) => {
-  app.listen(8095, () => {
-    log('start server')
+  const port = 8095
+  app.listen(port, () => {
+    log(`start server: http://0.0.0.0:${port}`)
   })
 }
 

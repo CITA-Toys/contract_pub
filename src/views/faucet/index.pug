@@ -7,15 +7,15 @@ block content
     form.mainForm(action="/faucet/getNos" method="post")
         if success
             div.alert.success
-                div.alertText Successful! hash: #{hash}
+                div.alertText=alert
         else if alert
             div.alert
                 div.alertText=alert
-        div.mainTitle Appchain Festhet Faucet
-        input#id-input-address.fontLittle.address(name='address', value=address, placeholder='Social network URL containing your E thereum address…')
+        div.mainTitle=mainTitle
+        input#id-input-address.fontLittle.address(name='address', value=address, placeholder=inputPlaceholder)
         div.captcha
             input.fontLittle.captchaInput(name='captcha')
             span.captchaImg !{svg}
-        button.fontNormal.submit(type='submit') GET
+        button.fontNormal.submit(type='submit')=buttonLabel
 block scripts
     script(src='/scripts/faucet.js')
