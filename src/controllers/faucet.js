@@ -27,13 +27,14 @@ const index = async (ctx, next) => {
 
 const checkAddress = (address) => {
   address = address.replace(/^0x/, '')
+  const size = address.length
   if (size !== 40) {
-    throw "There's wrong with the length of address"
+    throw "There's something wrong with the account address…"
   }
 }
 
 const sendNos = async (ctx, address, captcha) => {
-  // checkAddress(address)
+  checkAddress(address)
 
   if (ctx.session.captcha !== captcha) {
     // 验证码错误
@@ -46,7 +47,7 @@ const sendNos = async (ctx, address, captcha) => {
   if (res.status === 'OK') {
     return res
   } else {
-    throw "There's something wrong with the account address"
+    throw "There's something wrong with the account address…"
   }
 }
 
