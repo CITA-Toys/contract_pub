@@ -15,3 +15,5 @@ var init = function() {
 var main = function() {
   window.addEventListener('DOMContentLoaded', init)
 }
+
+main()
