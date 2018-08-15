@@ -2,7 +2,7 @@ extends ../layout.pug
 block title
     title=mainTitle
 block styles
-    link(href='/styles/faucet.css' rel="stylesheet")
+    link(href='/faucet/styles/faucet.css' rel="stylesheet")
 block content
     form.mainForm(action="/faucet/getNos" method="post")
         if success
@@ -18,4 +18,4 @@ block content
             span.captchaImg !{svg}
         button.fontNormal.submit(type='submit')=buttonLabel
 block scripts
-    script(src='/scripts/faucet.js')
+    script(src='/faucet/scripts/faucet.js')
