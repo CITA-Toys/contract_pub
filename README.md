@@ -12,5 +12,5 @@ yarn global add pm2
 ```
 
 ```shell
-pm2 start src/index
+pm2 start
 ```
