@@ -6,7 +6,7 @@
 
 该项目基于 Node.js 与 Koa.js 开发
 
-用于提供给开发者 AppChain 测试链(http://121.196.200.225:1337)的测试用代币
+用于提供给开发者 AppChain 测试链 ( http://121.196.200.225:1337 ) 的测试用代币
 
 [项目地址](https://dapp.cryptape.com/faucet/): https://dapp.cryptape.com/faucet/
 
