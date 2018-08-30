@@ -2,11 +2,23 @@
 
 
 
-## 项目地址
+## 项目介绍
 
-```shell
-https://github.com/cryptape/contract_pub.git
-```
+该项目基于 Node.js 与 Koa.js 开发
+
+用于提供给开发者 AppChain 测试链(http://121.196.200.225:1337)的测试用代币
+
+[项目地址](https://dapp.cryptape.com/faucet/): https://dapp.cryptape.com/faucet/
+
+[Github 仓库地址](https://github.com/cryptape/contract_pub.git): https://github.com/cryptape/contract_pub.git
+
+### 获取测试代币
+
+- 访问[页面](https://dapp.cryptape.com/faucet/)后输入需要获取测试代币的账户地址与正确的验证码
+
+- 然后点击 Get Testnet Token 按钮, 后台服务器会自动向指定地址转出 10000 个代币(10^22 quota)
+
+> 使用 Neuron 钱包登录可自动输入账户地址
 
 
 
@@ -41,9 +53,11 @@ yarn install
 - PRIVATE_KEY
   - 发币地址的私钥
 - APP_SESSION_KEY
-  - cookie key, 随机字符串, 长度大于 0
+  - cookie key, 随机字符串
+  - 长度大于 0
 - APP_KEYS
-  - 
+  - app keys, 多个随机字符串, 使用 `,` 隔开
+  - 至少设置一个长度大于 0 的字符串
 
 ### 启动项目
 
@@ -99,8 +113,42 @@ pm2 list
 
 
 
-## 项目介绍
+## 开发相关
 
-该项目主要基于 Node.js 与 Koa.js 开发
+### 启动项目
 
-该项目主要用于提供给开发者 AppChain 测试链(http://121.196.200.225:1337)的测试用代币
+在下载项目并安装依赖后, 执行下述指令启动项目 watch 模式
+
+```shell
+yarn start:watch
+```
+在更改代码后会自动重启项目
+
+### 目录与文件说明
+
+`/docs` 中是相关文档
+
+`/public` 中是静态文件, 前端需要用到的脚本, 样式, 图片等
+
+`/src` 中是程序的主文件
+
+`/src/config` 中是项目的基础配置
+
+`/src/controllers` 中是每个文件对应不同页面, 控制页面的内容与交互等
+
+`/src/log` 中是对 console.log 的封装
+
+`/src/routes` 中是对路由的配置
+
+`/src/utils` 中是一些函数, 比如一些与链交互操作的封装
+
+`/src/views` 中是 Pug 模板引擎文件, 生成前端 html 信息
+
+`/src/index.js` 是项目的入口文件, 含有对 koa 的配置
+
+### 相关文档
+
+[Koa.js](https://koa.bootcss.com/)
+
+[Pug](https://pugjs.org/api/getting-started.html)
+
