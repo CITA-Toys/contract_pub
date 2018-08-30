@@ -19,15 +19,6 @@ const transaction = {
   value: '',
 }
 
-if (process.env.USE_PRIVATE_CONFIG) {
-  const {
-    privateKey: key,
-    chain: _chain,
-  } = require('./private')
-  privateKey = key
-  chain = _chain
-}
-
 module.exports = {
   chain,
   privateKey,
