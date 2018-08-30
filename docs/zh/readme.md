@@ -20,17 +20,30 @@ git clone https://github.com/cryptape/contract_pub.git
 
 ### 安装依赖
 
-切换到项目根目录
+#### 切换到项目根目录
 
 ```shell
 cd contract_pub
 ```
 
-安装依赖
+#### 安装依赖
 
 ```shell
 yarn install
 ```
+
+#### 设置 .env 变量
+
+根据 .env.example 中的内容设置相应参数
+
+- CHAIN
+  - 链的地址, 需要完整的协议, 主机, 端口
+- PRIVATE_KEY
+  - 发币地址的私钥
+- APP_SESSION_KEY
+  - cookie key, 随机字符串, 长度大于 0
+- APP_KEYS
+  - 
 
 ### 启动项目
 
@@ -84,3 +97,10 @@ pm2 delete contract_pub
 pm2 list
 ```
 
+
+
+## 项目介绍
+
+该项目主要基于 Node.js 与 Koa.js 开发
+
+该项目主要用于提供给开发者 AppChain 测试链(http://121.196.200.225:1337)的测试用代币
