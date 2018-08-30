@@ -1,10 +1,10 @@
-const Nervos = require('@nervos/web3').default
+const Nervos = require('@nervos/chain').default
 require('dotenv').config()
 
 let chain = process.env.CHAIN
+const nervos = Nervos(chain)
 
 let privateKey = process.env.PRIVATE_KEY
-const nervos = Nervos(chain)
 
 const account = nervos.eth.accounts.privateKeyToAccount(privateKey)
 
