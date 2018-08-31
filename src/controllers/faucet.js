@@ -26,15 +26,16 @@ const index = async (ctx, next) => {
 }
 
 const checkAddress = (address) => {
-  address = address.replace(/^0x/, '')
+  address = address.toLocaleLowerCase().replace(/^0x/, '')
   const size = address.length
   if (size !== 40) {
     throw "There's something wrong with the account address…"
   }
+  return address
 }
 
 const sendNos = async (ctx, address, captcha) => {
-  checkAddress(address)
+  address = checkAddress(address)
 
   if (ctx.session.captcha !== captcha) {
     // 验证码错误
