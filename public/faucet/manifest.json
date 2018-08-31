@@ -5,7 +5,7 @@
   "chainSet": {
     "1": "http://121.196.200.225:1337"
   },
-  "icon": "https://avatars1.githubusercontent.com/u/35361817",
+  "icon": "https://cdn.cryptape.com/nervos.png",
   "start_url": "https://dapp.cryptape.com/faucet",
   "entry": "https://dapp.cryptape.com/faucet"
 }

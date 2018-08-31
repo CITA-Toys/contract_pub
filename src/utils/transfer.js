@@ -1,20 +1,16 @@
 const chalk = require('chalk')
 const log = require('../log/index')
-const {
-  chain,
-  privateKey,
-  nervos,
-  account,
-  transaction,
-} = require('../config/chain')
+const { chain, privateKey, nervos, account, transaction } = require('../config/chain')
 
-const checkBalance = async to => {
+const checkBalance = async (to) => {
   const balance = await nervos.appchain.getBalance(to)
   console.log(chalk.green.bold(`Now ${to} has balance of ${balance}`))
 }
 
 const transfer = async (to, value) => {
-  log('start transfer from', account.address, 'to',  to, 'transer', value)
+  
+  // to = to.toLowerCase().slice(2)
+  log('start transfer from', account.address, 'to', to, 'transer', value)
 
   const current = await nervos.appchain.getBlockNumber()
 

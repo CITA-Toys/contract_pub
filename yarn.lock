@@ -2,32 +2,18 @@
 # yarn lockfile v1
 
 
-"@nervos/signer@^1.0.19":
-  version "1.0.22"
-  resolved "https://registry.npmjs.org/@nervos/signer/-/signer-1.0.22.tgz#0e11ab9a866a01eec2ff1fc2f3f042c00130e24c"
+"@nervos/chain@^0.17.18":
+  version "0.17.18"
+  resolved "https://registry.yarnpkg.com/@nervos/chain/-/chain-0.17.18.tgz#49be7d4e1a51209e2c5bfe482587aa6b0489cfe4"
   dependencies:
-    "@nervos/web3-plugin" "^0.17.5"
-    crypto-js "^3.1.9-1"
-    ec "^0.0.1"
-    eccrypto "^1.0.3"
-    elliptic "^6.4.0"
+    "@nervos/signer" "^1.0.33"
     web3 "^1.0.0-beta.34"
 
-"@nervos/web3-plugin@^0.17.5":
-  version "0.17.8"
-  resolved "https://registry.npmjs.org/@nervos/web3-plugin/-/web3-plugin-0.17.8.tgz#32ec2209bd615dbc53100aa746afee5e5835152e"
+"@nervos/signer@^1.0.33":
+  version "1.0.33"
+  resolved "https://registry.yarnpkg.com/@nervos/signer/-/signer-1.0.33.tgz#5a2be31a01ddb5c9c0b2dfefb54957adb818ceca"
   dependencies:
-    "@types/google-protobuf" "^3.2.7"
-    axios "^0.18.0"
-    google-protobuf "^3.5.0"
-
-"@nervos/web3@^0.17.33":
-  version "0.17.37"
-  resolved "https://registry.npmjs.org/@nervos/web3/-/web3-0.17.37.tgz#eb04ff200a1db437d04f78b63d90a883e7c28279"
-  dependencies:
-    "@nervos/signer" "^1.0.19"
-    axios "^0.18.0"
-    crypto-js "^3.1.9-1"
+    ec "^0.0.1"
     elliptic "^6.4.0"
     google-protobuf "^3.5.0"
     web3 "^1.0.0-beta.34"
@@ -88,10 +74,6 @@
     "@types/body-parser" "*"
     "@types/express-serve-static-core" "*"
     "@types/serve-static" "*"
-
-"@types/google-protobuf@^3.2.7":
-  version "3.2.7"
-  resolved "https://registry.npmjs.org/@types/google-protobuf/-/google-protobuf-3.2.7.tgz#9576ed5dd62cdb1c9f952522028a03b7cb2b69b5"
 
 "@types/http-assert@*":
   version "1.2.2"
@@ -407,13 +389,6 @@ axios@^0.15.3:
   resolved "https://registry.npmjs.org/axios/-/axios-0.15.3.tgz#2c9d638b2e191a08ea1d6cc988eadd6ba5bdc053"
   dependencies:
     follow-redirects "1.0.0"
-
-axios@^0.18.0:
-  version "0.18.0"
-  resolved "https://registry.npmjs.org/axios/-/axios-0.18.0.tgz#32d53e4851efdc0a11993b6cd000789d70c05102"
-  dependencies:
-    follow-redirects "^1.3.0"
-    is-buffer "^1.1.5"
 
 babel-code-frame@^6.22.0:
   version "6.26.0"
@@ -1275,10 +1250,6 @@ crypto-js@^3.1.4:
   version "3.1.8"
   resolved "https://registry.npmjs.org/crypto-js/-/crypto-js-3.1.8.tgz#715f070bf6014f2ae992a98b3929258b713f08d5"
 
-crypto-js@^3.1.9-1:
-  version "3.1.9-1"
-  resolved "https://registry.npmjs.org/crypto-js/-/crypto-js-3.1.9-1.tgz#fda19e761fc077e01ffbfdc6e9fdfc59e8806cd8"
-
 crypto-random-string@^1.0.0:
   version "1.0.0"
   resolved "https://registry.npmjs.org/crypto-random-string/-/crypto-random-string-1.0.0.tgz#a230f64f568310e1498009940790ec99545bca7e"
@@ -1545,7 +1516,7 @@ duplexify@^3.4.2, duplexify@^3.6.0:
 
 ec@^0.0.1:
   version "0.0.1"
-  resolved "https://registry.npmjs.org/ec/-/ec-0.0.1.tgz#5579aad6053f2ce337bc712a905188f69450b8e1"
+  resolved "https://registry.yarnpkg.com/ec/-/ec-0.0.1.tgz#5579aad6053f2ce337bc712a905188f69450b8e1"
 
 ecc-jsbn@~0.1.1:
   version "0.1.1"
@@ -1553,7 +1524,7 @@ ecc-jsbn@~0.1.1:
   dependencies:
     jsbn "~0.1.0"
 
-eccrypto@1.0.3, eccrypto@^1.0.3:
+eccrypto@1.0.3:
   version "1.0.3"
   resolved "https://registry.npmjs.org/eccrypto/-/eccrypto-1.0.3.tgz#a4120e6ce98b0072c1ceaafdead156f6bb8b24e3"
   dependencies:
@@ -2020,12 +1991,6 @@ follow-redirects@1.0.0:
   resolved "https://registry.npmjs.org/follow-redirects/-/follow-redirects-1.0.0.tgz#8e34298cbd2e176f254effec75a1c78cc849fd37"
   dependencies:
     debug "^2.2.0"
-
-follow-redirects@^1.3.0:
-  version "1.5.1"
-  resolved "https://registry.npmjs.org/follow-redirects/-/follow-redirects-1.5.1.tgz#67a8f14f5a1f67f962c2c46469c79eaec0a90291"
-  dependencies:
-    debug "^3.1.0"
 
 for-each@^0.3.2:
   version "0.3.2"

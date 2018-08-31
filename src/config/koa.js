@@ -19,12 +19,6 @@ const session = {
 
 let keys = process.env.APP_KEYS.split(',')
 
-if (process.env.USE_PRIVATE_CONFIG) {
-  const { sessionKey, appKeys } = require('./private')
-  session.key = sessionKey
-  keys = appKeys
-}
-
 module.exports = {
   session,
   keys,

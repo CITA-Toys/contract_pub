@@ -1,4 +1,4 @@
-const Nervos = require('@nervos/web3').default
+const Nervos = require('@nervos/chain').default
 const chalk = require('chalk')
 const {
   privateKey,
