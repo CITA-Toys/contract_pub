@@ -8,9 +8,8 @@ const checkBalance = async (to) => {
 }
 
 const transfer = async (to, value) => {
-  
-  // to = to.toLowerCase().slice(2)
-  log('start transfer from', account.address, 'to', to, 'transer', value)
+  to = to.toLocaleLowerCase().slice(2)
+  log('start transfer from', transaction.from, 'to', to, 'transer', value)
 
   const current = await nervos.appchain.getBlockNumber()
 
