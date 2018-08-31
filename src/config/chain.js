@@ -9,7 +9,8 @@ let privateKey = process.env.PRIVATE_KEY
 const account = nervos.eth.accounts.privateKeyToAccount(privateKey)
 
 const transaction = {
-  from: account.address,
+  from: account.address.toLowerCase().slice(2),
+  // from: account.address,
   privateKey,
   nonce: 999999,
   quota: 1000000,

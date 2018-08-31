@@ -14,7 +14,7 @@
     "typescript": "^2.8.3"
   },
   "dependencies": {
-    "@nervos/chain": "^0.17.17",
+    "@nervos/chain": "^0.17.18",
     "chalk": "^2.4.1",
     "cita-web3": "^0.5.7",
     "dotenv": "^6.0.0",

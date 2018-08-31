@@ -2,9 +2,9 @@
 # yarn lockfile v1
 
 
-"@nervos/chain@^0.17.17":
-  version "0.17.17"
-  resolved "https://registry.yarnpkg.com/@nervos/chain/-/chain-0.17.17.tgz#383b7a0315087a3c27cbb1c45e9025621dbaf712"
+"@nervos/chain@^0.17.18":
+  version "0.17.18"
+  resolved "https://registry.yarnpkg.com/@nervos/chain/-/chain-0.17.18.tgz#49be7d4e1a51209e2c5bfe482587aa6b0489cfe4"
   dependencies:
     "@nervos/signer" "^1.0.33"
     web3 "^1.0.0-beta.34"
