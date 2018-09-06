@@ -4,7 +4,9 @@
   "main": "index.js",
   "scripts": {
     "start:watch": "nodemon ./src/index.js",
-    "start": "node ./src/index.js"
+    "start": "node ./src/index.js",
+    "docker:build": "docker build -t faucet .",
+    "docker:run": "docker run -d -p 8095:8095 faucet"
   },
   "license": "MIT",
   "devDependencies": {
