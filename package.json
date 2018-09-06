@@ -6,12 +6,14 @@
     "start:watch": "nodemon ./src/index.js",
     "start": "node ./src/index.js",
     "docker:build": "docker build -t faucet .",
-    "docker:run": "docker run -d -p 8095:8095 faucet"
+    "docker:run": "docker run -d -p 8095:8095 faucet",
+    "test": "jest"
   },
   "license": "MIT",
   "devDependencies": {
     "@types/koa-static": "^4.0.0",
     "eslint": "^4.19.1",
+    "jest": "^23.5.0",
     "nodemon": "^1.17.3",
     "typescript": "^2.8.3"
   },
