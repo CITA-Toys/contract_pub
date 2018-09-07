@@ -1,7 +1,5 @@
 # Faucet Readme
 
-
-
 ## 项目介绍
 
 该项目基于 Node.js 与 Koa.js 开发
@@ -19,8 +17,6 @@
 - 然后点击 Get Testnet Token 按钮, 后台服务器会自动向指定地址转出 10000 个代币(10^22 quota)
 
 > 使用 Neuron 钱包登录可自动输入账户地址
-
-
 
 ## 部署流程
 
@@ -58,10 +54,15 @@ yarn install
 - APP_KEYS
   - app keys, 多个随机字符串, 使用 `,` 隔开
   - 至少设置一个长度大于 0 的字符串
+- TRANSFER_COUNT
+  - 单次转账的金额, 十六进制数, 以 quota 为单位
+  - 默认为 `0x021e19e0c9bab2400000`
 
 ### 启动项目
 
-该项目需要 pm2, 需要全局安装, 
+#### 方式 1: pm2 启动项目
+
+pm2 需要全局安装,
 
 如果 pm2 已经安装(可以输入 `pm2` 确认是否安装), 不需要执行下一条指令
 
@@ -74,6 +75,14 @@ yarn global add pm2
 ```shell
 pm2 start
 ```
+
+#### 方式 2: docker 启动项目
+
+1. 启动 docker daemon
+
+2. 终端执行 `yarn run docker:build` 构建镜像
+
+3. 终端执行 `yarn run docker:run` 运行 docker 容器, 服务默认运行在 8095 端口
 
 ### 管理项目
 
@@ -111,8 +120,6 @@ pm2 delete contract_pub
 pm2 list
 ```
 
-
-
 ## 开发相关
 
 ### 启动项目
@@ -122,6 +129,7 @@ pm2 list
 ```shell
 yarn start:watch
 ```
+
 在更改代码后会自动重启项目
 
 ### 目录与文件说明
@@ -151,4 +159,3 @@ yarn start:watch
 [Koa.js](https://koa.bootcss.com/)
 
 [Pug](https://pugjs.org/api/getting-started.html)
-
