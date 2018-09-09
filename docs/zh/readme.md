@@ -91,19 +91,19 @@ pm2 start
 #### 暂停项目
 
 ```
-pm2 stop contract_pub
+pm2 stop appchain_testnet_faucet
 ```
 
 #### 重启项目
 
 ```shell
-pm2 reload contract_pub
+pm2 reload appchain_testnet_faucet
 ```
 
 #### 启动项目
 
 ```shell
-pm2 start contract_pub
+pm2 start appchain_testnet_faucet
 ```
 
 #### 删除项目
@@ -111,7 +111,7 @@ pm2 start contract_pub
 执行下面的指令后需要重新进入项目根目录输入 `pm2 start` 重新启动
 
 ```shell
-pm2 delete contract_pub
+pm2 delete appchain_testnet_faucet
 ```
 
 #### 列出所有项目
