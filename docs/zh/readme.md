@@ -1,4 +1,4 @@
-# Faucet Readme
+# Nervos AppChain Testnet Faucet
 
 ## 项目介绍
 
@@ -8,7 +8,7 @@
 
 [项目地址](https://dapp.cryptape.com/faucet/): https://dapp.cryptape.com/faucet/
 
-[Github 仓库地址](https://github.com/cryptape/contract_pub.git): https://github.com/cryptape/contract_pub.git
+[Github 仓库地址](https://github.com/cryptape/appchain-testnet-faucet.git): https://github.com/cryptape/appchain-testnet-faucet.git
 
 ### 获取测试代币
 
@@ -23,7 +23,7 @@
 ### 下载项目
 
 ```shell
-git clone https://github.com/cryptape/contract_pub.git
+git clone https://github.com/cryptape/appchain-testnet-faucet.git
 ```
 
 ### 安装依赖
@@ -31,7 +31,7 @@ git clone https://github.com/cryptape/contract_pub.git
 #### 切换到项目根目录
 
 ```shell
-cd contract_pub
+cd appchain-testnet-faucet
 ```
 
 #### 安装依赖
