@@ -1,4 +1,4 @@
-# contract_pub
+# appchain_testnet_faucet
 
 # deploy
 
