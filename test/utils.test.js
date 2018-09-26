@@ -16,6 +16,6 @@ test(`transfer to ${to}`, async () => {
       console.log(balance2)
       expect(+balance2).toBe(+balance + 16)
       resolve()
-    }, 5000)
+    }, 7000)
   })
 })
