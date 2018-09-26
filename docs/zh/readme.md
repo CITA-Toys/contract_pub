@@ -1,6 +1,4 @@
-# Faucet Readme
-
-
+# Nervos AppChain Testnet Faucet
 
 ## 项目介绍
 
@@ -10,7 +8,7 @@
 
 [项目地址](https://dapp.cryptape.com/faucet/): https://dapp.cryptape.com/faucet/
 
-[Github 仓库地址](https://github.com/cryptape/contract_pub.git): https://github.com/cryptape/contract_pub.git
+[Github 仓库地址](https://github.com/cryptape/appchain-testnet-faucet.git): https://github.com/cryptape/appchain-testnet-faucet.git
 
 ### 获取测试代币
 
@@ -20,14 +18,12 @@
 
 > 使用 Neuron 钱包登录可自动输入账户地址
 
-
-
 ## 部署流程
 
 ### 下载项目
 
 ```shell
-git clone https://github.com/cryptape/contract_pub.git
+git clone https://github.com/cryptape/appchain-testnet-faucet.git
 ```
 
 ### 安装依赖
@@ -35,7 +31,7 @@ git clone https://github.com/cryptape/contract_pub.git
 #### 切换到项目根目录
 
 ```shell
-cd contract_pub
+cd appchain-testnet-faucet
 ```
 
 #### 安装依赖
@@ -58,10 +54,15 @@ yarn install
 - APP_KEYS
   - app keys, 多个随机字符串, 使用 `,` 隔开
   - 至少设置一个长度大于 0 的字符串
+- TRANSFER_COUNT
+  - 单次转账的金额, 十六进制数, 以 quota 为单位
+  - 默认为 `0x021e19e0c9bab2400000`
 
 ### 启动项目
 
-该项目需要 pm2, 需要全局安装, 
+#### 方式 1: pm2 启动项目
+
+pm2 需要全局安装,
 
 如果 pm2 已经安装(可以输入 `pm2` 确认是否安装), 不需要执行下一条指令
 
@@ -75,6 +76,14 @@ yarn global add pm2
 pm2 start
 ```
 
+#### 方式 2: docker 启动项目
+
+1. 启动 docker daemon
+
+2. 终端执行 `yarn run docker:build` 构建镜像
+
+3. 终端执行 `yarn run docker:run` 运行 docker 容器, 服务默认运行在 8095 端口
+
 ### 管理项目
 
 更详细的内容请参阅 pm2 [官方文档](http://pm2.keymetrics.io/docs/usage/process-management/)
@@ -82,19 +91,19 @@ pm2 start
 #### 暂停项目
 
 ```
-pm2 stop contract_pub
+pm2 stop appchain_testnet_faucet
 ```
 
 #### 重启项目
 
 ```shell
-pm2 reload contract_pub
+pm2 reload appchain_testnet_faucet
 ```
 
 #### 启动项目
 
 ```shell
-pm2 start contract_pub
+pm2 start appchain_testnet_faucet
 ```
 
 #### 删除项目
@@ -102,7 +111,7 @@ pm2 start contract_pub
 执行下面的指令后需要重新进入项目根目录输入 `pm2 start` 重新启动
 
 ```shell
-pm2 delete contract_pub
+pm2 delete appchain_testnet_faucet
 ```
 
 #### 列出所有项目
@@ -110,8 +119,6 @@ pm2 delete contract_pub
 ```shell
 pm2 list
 ```
-
-
 
 ## 开发相关
 
@@ -122,6 +129,7 @@ pm2 list
 ```shell
 yarn start:watch
 ```
+
 在更改代码后会自动重启项目
 
 ### 目录与文件说明
@@ -151,4 +159,3 @@ yarn start:watch
 [Koa.js](https://koa.bootcss.com/)
 
 [Pug](https://pugjs.org/api/getting-started.html)
-

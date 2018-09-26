@@ -1,8 +1,7 @@
-FROM node:8
+FROM node:9
 WORKDIR /usr/src/app
 COPY package*.json ./
-RUN npm install yarn
-RUN yarn install
+RUN npm install
 COPY . .
 EXPOSE 8095
 CMD ["npm", "start"]

@@ -1,6 +1,6 @@
 const svgCap = require('svg-captcha')
-const log = require('../log/index')
 const transfer = require('../utils/transfer')
+require('dotenv').config()
 
 const newCaptcha = async (ctx) => {
   const opts = {
@@ -42,8 +42,7 @@ const sendNos = async (ctx, address, captcha) => {
     throw 'Verification Code Errors !'
   }
 
-  const res = await transfer(address, '0x021e19e0c9bab2400000')
-  // log('transfer res', res)
+  const res = await transfer(address, process.env.TRANSFER_COUNT || '0x021e19e0c9bab2400000')
 
   if (res.status === 'OK') {
     return res
@@ -53,7 +52,10 @@ const sendNos = async (ctx, address, captcha) => {
 }
 
 const getNos = async (ctx, next) => {
-  let { address, captcha } = ctx.request.body
+  let {
+    address,
+    captcha
+  } = ctx.request.body
 
   captcha = captcha.toLocaleLowerCase()
 
@@ -61,11 +63,17 @@ const getNos = async (ctx, next) => {
     const res = await sendNos(ctx, address, captcha)
     // 成功
     const alert = `Successful! hash: ${res.hash}`
-    await renderIndex(ctx, { success: true, alert })
+    await renderIndex(ctx, {
+      success: true,
+      alert
+    })
   } catch (err) {
     // 地址错误或者其他
     const alert = err
-    await renderIndex(ctx, { address, alert })
+    await renderIndex(ctx, {
+      address,
+      alert
+    })
   }
 }
 
