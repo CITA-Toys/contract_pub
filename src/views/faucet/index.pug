@@ -7,7 +7,8 @@ block content
     form.mainForm(action="/faucet/getNos" method="post")
         if success
             div.alert.success
-                div.alertText=alert
+                div.alertText
+                    a(href=`${microscopeLink}`,target="_blank")=alert
         else if alert
             div.alert
                 div.alertText=alert

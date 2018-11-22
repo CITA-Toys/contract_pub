@@ -2,6 +2,22 @@
 # yarn lockfile v1
 
 
+"@appchain/base@^0.20.1":
+  version "0.20.1"
+  resolved "https://registry.npmjs.org/@appchain/base/-/base-0.20.1.tgz#302637d87b8226f5c8659dc8520a59336f2156f1"
+  dependencies:
+    "@appchain/signer" "^2.0.2"
+    web3 "^1.0.0-beta.34"
+
+"@appchain/signer@^2.0.2":
+  version "2.0.2"
+  resolved "https://registry.npmjs.org/@appchain/signer/-/signer-2.0.2.tgz#9683a9f60bb2bef24cf7106508fb41817b61c490"
+  dependencies:
+    ec "^0.0.1"
+    elliptic "^6.4.0"
+    google-protobuf "^3.5.0"
+    web3 "^1.0.0-beta.34"
+
 "@babel/code-frame@^7.0.0-beta.35":
   version "7.0.0"
   resolved "https://registry.npmjs.org/@babel/code-frame/-/code-frame-7.0.0.tgz#06e2ab19bdb535385559aabb5ba59729482800f8"
@@ -15,22 +31,6 @@
     chalk "^2.0.0"
     esutils "^2.0.2"
     js-tokens "^4.0.0"
-
-"@nervos/chain@^0.17.18":
-  version "0.17.18"
-  resolved "https://registry.yarnpkg.com/@nervos/chain/-/chain-0.17.18.tgz#49be7d4e1a51209e2c5bfe482587aa6b0489cfe4"
-  dependencies:
-    "@nervos/signer" "^1.0.33"
-    web3 "^1.0.0-beta.34"
-
-"@nervos/signer@^1.0.33":
-  version "1.0.33"
-  resolved "https://registry.yarnpkg.com/@nervos/signer/-/signer-1.0.33.tgz#5a2be31a01ddb5c9c0b2dfefb54957adb818ceca"
-  dependencies:
-    ec "^0.0.1"
-    elliptic "^6.4.0"
-    google-protobuf "^3.5.0"
-    web3 "^1.0.0-beta.34"
 
 "@types/accepts@*":
   version "1.3.5"

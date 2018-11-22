@@ -2,6 +2,9 @@ const svgCap = require('svg-captcha')
 const transfer = require('../utils/transfer')
 require('dotenv').config()
 
+const microscopeAddr = 'https://microscope.cryptape.com'
+const rebirthAddr = 'https://rebirth.cryptape.com'
+
 const newCaptcha = async (ctx) => {
   const opts = {
     color: true,
@@ -63,9 +66,11 @@ const getNos = async (ctx, next) => {
     const res = await sendNos(ctx, address, captcha)
     // 成功
     const alert = `Successful! hash: ${res.hash}`
+    const microscopeLink = `${microscopeAddr}?chain=${rebirthAddr}/#/transaction/${res.hash}`
     await renderIndex(ctx, {
       success: true,
-      alert
+      alert,
+      microscopeLink
     })
   } catch (err) {
     // 地址错误或者其他
