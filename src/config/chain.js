@@ -1,21 +1,20 @@
-const Nervos = require('@nervos/chain').default
+const AppChain = require('@appchain/base').default
 require('dotenv').config()
 
 let chain = process.env.CHAIN
-const nervos = Nervos(chain)
+const appchain = AppChain(chain)
 
 let privateKey = process.env.PRIVATE_KEY
 
-const account = nervos.eth.accounts.privateKeyToAccount(privateKey)
+const account = appchain.base.accounts.privateKeyToAccount(privateKey)
+appchain.base.accounts.wallet.add(account)
 
 const transaction = {
-  from: account.address.toLocaleLowerCase().slice(2),
-  // from: account.address,
-  privateKey,
+  from: account.address,
   nonce: 999999,
   quota: 1000000,
   chainId: 1,
-  version: 0,
+  version: 1,
   validUntilBlock: 999999,
   value: '',
 }
@@ -23,7 +22,7 @@ const transaction = {
 module.exports = {
   chain,
   privateKey,
-  nervos,
+  appchain,
   account,
   transaction,
 }

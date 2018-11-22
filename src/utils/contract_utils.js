@@ -40,7 +40,7 @@ var initBlockNumber = function (web3, callback) {
                 nonce: getRandomInt(),
                 quota: quota,
                 validUntilBlock: res + 88,
-                version: 0
+                version: 1
             };
             callback(commonParams);
         } else {
