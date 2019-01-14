@@ -39,8 +39,9 @@ const checkAddress = (address) => {
 
 const sendNos = async (ctx, address, captcha) => {
   address = checkAddress(address)
+  const requiredCaptcha = process.env.NODE_ENV === 'test' ? process.env.CAPTCHA : ctx.session.captcha
 
-  if (ctx.session.captcha !== captcha) {
+  if (requiredCaptcha !== captcha) {
     // 验证码错误
     throw 'Verification Code Errors !'
   }

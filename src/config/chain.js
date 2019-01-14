@@ -1,13 +1,13 @@
-const AppChain = require('@appchain/base').default
+const CITASDK = require('@cryptape/cita-sdk').default
 require('dotenv').config()
 
 let chain = process.env.CHAIN
-const appchain = AppChain(chain)
+const citaSDK = CITASDK(chain)
 
 let privateKey = process.env.PRIVATE_KEY
 
-const account = appchain.base.accounts.privateKeyToAccount(privateKey)
-appchain.base.accounts.wallet.add(account)
+const account = citaSDK.base.accounts.privateKeyToAccount(privateKey)
+citaSDK.base.accounts.wallet.add(account)
 
 const transaction = {
   from: account.address,
@@ -22,7 +22,7 @@ const transaction = {
 module.exports = {
   chain,
   privateKey,
-  appchain,
+  citaSDK,
   account,
   transaction,
 }
