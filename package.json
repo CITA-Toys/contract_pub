@@ -1,5 +1,5 @@
 {
-  "name": "cita-contract-platform",
+  "name": "cita-testnet-faucet",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
@@ -18,10 +18,10 @@
     "typescript": "^2.8.3"
   },
   "dependencies": {
-    "@appchain/base": "^0.20.1",
+    "@cryptape/cita-sdk": "^0.22.0-alpha.0",
     "chalk": "^2.4.1",
     "cita-web3": "^0.5.7",
-    "dotenv": "^6.0.0",
+    "dotenv": "^6.2.0",
     "koa": "^2.5.1",
     "koa-body": "^2.5.0",
     "koa-router": "^7.4.0",
