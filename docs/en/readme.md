@@ -15,7 +15,7 @@ Test tokens for the developer's AppChain test chain ( [http://121.196.200.225:13
 - After accessing the [page](https://dapp.cryptape.com/faucet/) , enter the account address and the correct verification code for the test token.
 - Then click the Get Testnet Token button, the background server will automatically transfer 10,000 tokens to the specified address (10^22 quota)
 
-> Sign in with the Neuron wallet to automatically enter your account address
+> Sign in with the Cyton wallet to automatically enter your account address
 
 ## Deployment process
 
