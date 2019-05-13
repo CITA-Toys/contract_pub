@@ -4,7 +4,7 @@
 
 The project is based on Node.js and Koa.js development
 
-Test tokens for the developer's CITA test chain ( [https://node.cryptape.com](https://node.cryptape.com) )
+Test tokens for the developer's CITA test chain ( [http://121.196.200.225:1337](http://121.196.200.225:1337/) )
 
 [Project address](https://dapp.cryptape.com/faucet/) : <https://dapp.cryptape.com/faucet/>
 
