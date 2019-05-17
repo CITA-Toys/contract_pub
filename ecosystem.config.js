@@ -1,6 +1,6 @@
 module.exports = {
   apps : [{
-    name: "appchain_testnet_faucet",
+    name: "cita_testnet_faucet",
     script: "./src/index.js",
     env: {
       NODE_ENV: "development",

@@ -1,7 +1,7 @@
 const chalk = require('chalk')
 const log = require('../log/index')
 const {
-  appchain,
+  citaSDK,
   transaction
 } = require('../config/chain')
 
@@ -9,7 +9,7 @@ const transfer = async (to, value) => {
 
   log('start transfer from', transaction.from, 'to', to, 'transer', value)
 
-  const current = await appchain.base.getBlockNumber()
+  const current = await citaSDK.base.getBlockNumber()
 
   const tx = {
     ...transaction,
@@ -18,7 +18,7 @@ const transfer = async (to, value) => {
     validUntilBlock: +current + 88,
   }
 
-  return await appchain.base.sendTransaction(tx)
+  return await citaSDK.base.sendTransaction(tx)
 }
 
 module.exports = transfer

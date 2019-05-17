@@ -1,18 +1,18 @@
-var setAddress = function() {
+var setAddress = function () {
   var input = document.getElementById('id-input-address')
 
   try {
-    input.value = neuron.getAccount()
+    input.value = cyton.getAccount()
   } catch (err) {
     console.error(err)
   }
 }
 
-var init = function() {
+var init = function () {
   setAddress()
 }
 
-var main = function() {
+var main = function () {
   window.addEventListener('DOMContentLoaded', init)
 }
 

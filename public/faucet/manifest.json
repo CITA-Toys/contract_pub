@@ -1,11 +1,10 @@
 {
   "short_name": "Faucet",
-  "name": "Nervos AppChain Testnet Faucet",
+  "name": "CITA Testnet Faucet",
   "blockViewer": "https://etherscan.io/",
   "chainSet": {
-    "1": "http://121.196.200.225:1337"
+    "1": "http://node.cryptape.com"
   },
-  "icon": "https://cdn.cryptape.com/nervos.png",
   "start_url": "https://dapp.cryptape.com/faucet",
   "entry": "https://dapp.cryptape.com/faucet"
 }

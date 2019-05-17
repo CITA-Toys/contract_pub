@@ -19,7 +19,7 @@ const newCaptcha = async (ctx) => {
 const renderIndex = async (ctx, params = {}) => {
   params.svg = await newCaptcha(ctx)
   params.inputPlaceholder = 'Enter your account address here'
-  params.mainTitle = 'Nervos AppChain Testnet Faucet'
+  params.mainTitle = 'CITA Testnet Faucet'
   params.buttonLabel = 'Get Testnet Token'
   return await ctx.render('faucet/index', params)
 }
@@ -39,8 +39,9 @@ const checkAddress = (address) => {
 
 const sendNos = async (ctx, address, captcha) => {
   address = checkAddress(address)
+  const requiredCaptcha = process.env.NODE_ENV === 'test' ? process.env.CAPTCHA : ctx.session.captcha
 
-  if (ctx.session.captcha !== captcha) {
+  if (requiredCaptcha !== captcha) {
     // 验证码错误
     throw 'Verification Code Errors !'
   }

@@ -1,28 +1,28 @@
-# Nervos AppChain Testnet Faucet
+# CITA Testnet Faucet
 
 ## Project Introduction
 
 The project is based on Node.js and Koa.js development
 
-Test tokens for the developer's AppChain test chain ( [http://121.196.200.225:1337](http://121.196.200.225:1337/) )
+Test tokens for the developer's CITA test chain ( [https://node.cryptape.com](https://node.cryptape.com) )
 
 [Project address](https://dapp.cryptape.com/faucet/) : <https://dapp.cryptape.com/faucet/>
 
-[Github repository address](https://github.com/cryptape/appchain-testnet-faucet.git) : <https://github.com/cryptape/appchain-testnet-faucet.git>
+[Github repository address](https://github.com/cryptape/cita-testnet-faucet.git) : <https://github.com/cryptape/cita-testnet-faucet.git>
 
 ### Get test tokens
 
 - After accessing the [page](https://dapp.cryptape.com/faucet/) , enter the account address and the correct verification code for the test token.
 - Then click the Get Testnet Token button, the background server will automatically transfer 10,000 tokens to the specified address (10^22 quota)
 
-> Sign in with the Neuron wallet to automatically enter your account address
+> Sign in with the Cyton wallet to automatically enter your account address
 
 ## Deployment process
 
 ### Download project
 
 ```
-git clone https://github.com/cryptape/appchain-testnet-faucet.git
+git clone https://github.com/cryptape/cita-testnet-faucet.git
 ```
 
 ### Installation dependency
@@ -30,7 +30,7 @@ git clone https://github.com/cryptape/appchain-testnet-faucet.git
 #### Switch to the project root directory
 
 ```
-cd appchain testnet faucet
+cd cita-testnet-faucet
 ```
 
 #### Installation dependency
@@ -88,19 +88,19 @@ For more details, please refer to the [official](http://pm2.keymetrics.io/docs/u
 #### Suspend project
 
 ```
-pm2 stop appchain_testnet_faucet
+pm2 stop cita_testnet_faucet
 ```
 
 #### Restart project
 
 ```
-pm2 reload appchain_testnet_faucet
+pm2 reload cita_testnet_faucet
 ```
 
 #### Startup project
 
 ```
-pm2 start appchain_testnet_faucet
+pm2 start cita_testnet_faucet
 ```
 
 #### Delete item
@@ -108,7 +108,7 @@ pm2 start appchain_testnet_faucet
 After executing the following command need to re-enter into the project root directory `pm2 start`to restart
 
 ```
-pm2 delete appchain_testnet_faucet
+pm2 delete cita_testnet_faucet
 ```
 
 #### List all items
