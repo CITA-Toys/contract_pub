@@ -19,7 +19,7 @@ const newCaptcha = async (ctx) => {
 const renderIndex = async (ctx, params = {}) => {
   params.svg = await newCaptcha(ctx)
   params.inputPlaceholder = 'Enter your account address here'
-  params.mainTitle = 'Nervos AppChain Testnet Faucet'
+  params.mainTitle = 'CITA Testnet Faucet'
   params.buttonLabel = 'Get Testnet Token'
   return await ctx.render('faucet/index', params)
 }

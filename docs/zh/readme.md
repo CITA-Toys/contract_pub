@@ -1,14 +1,14 @@
-# Nervos AppChain Testnet Faucet
+# CITA Testnet Faucet
 
 ## 项目介绍
 
 该项目基于 Node.js 与 Koa.js 开发
 
-用于提供给开发者 AppChain 测试链 ( http://121.196.200.225:1337 ) 的测试用代币
+用于提供给开发者 CITA 测试链 ( https://node.cryptape.com ) 的测试用代币
 
 [项目地址](https://dapp.cryptape.com/faucet/): https://dapp.cryptape.com/faucet/
 
-[Github 仓库地址](https://github.com/cryptape/appchain-testnet-faucet.git): https://github.com/cryptape/appchain-testnet-faucet.git
+[Github 仓库地址](https://github.com/cryptape/cita-testnet-faucet.git): https://github.com/cryptape/cita-testnet-faucet.git
 
 ### 获取测试代币
 
@@ -23,7 +23,7 @@
 ### 下载项目
 
 ```shell
-git clone https://github.com/cryptape/appchain-testnet-faucet.git
+git clone https://github.com/cryptape/cita-testnet-faucet.git
 ```
 
 ### 安装依赖
@@ -31,7 +31,7 @@ git clone https://github.com/cryptape/appchain-testnet-faucet.git
 #### 切换到项目根目录
 
 ```shell
-cd appchain-testnet-faucet
+cd cita-testnet-faucet
 ```
 
 #### 安装依赖
@@ -86,24 +86,24 @@ pm2 start
 
 ### 管理项目
 
-更详细的内容请参阅 pm2 [官方文档](http://pm2.keymetrics.io/docs/usage/process-management/)
+更详细的内容请参阅 pm2 [官方文档](https://pm2.keymetrics.io/docs/usage/process-management/)
 
 #### 暂停项目
 
 ```
-pm2 stop appchain_testnet_faucet
+pm2 stop cita_testnet_faucet
 ```
 
 #### 重启项目
 
 ```shell
-pm2 reload appchain_testnet_faucet
+pm2 reload cita_testnet_faucet
 ```
 
 #### 启动项目
 
 ```shell
-pm2 start appchain_testnet_faucet
+pm2 start cita_testnet_faucet
 ```
 
 #### 删除项目
@@ -111,7 +111,7 @@ pm2 start appchain_testnet_faucet
 执行下面的指令后需要重新进入项目根目录输入 `pm2 start` 重新启动
 
 ```shell
-pm2 delete appchain_testnet_faucet
+pm2 delete cita_testnet_faucet
 ```
 
 #### 列出所有项目
