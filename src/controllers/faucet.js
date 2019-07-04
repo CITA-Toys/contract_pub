@@ -66,7 +66,7 @@ const getNos = async (ctx, next) => {
   try {
     const res = await sendNos(ctx, address, captcha)
     // 成功
-    const alert = `Successful! hash: ${res.hash}`
+    const alert = `Successful! hash: ${res.hash}(please wait for one block)`
     const microscopeLink = `${microscopeAddr}?chain=${rebirthAddr}/#/transaction/${res.hash}`
     await renderIndex(ctx, {
       success: true,
