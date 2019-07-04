@@ -18,7 +18,7 @@
     "typescript": "^2.8.3"
   },
   "dependencies": {
-    "@cryptape/cita-sdk": "^0.21.0-alpha.0",
+    "@cryptape/cita-sdk": "^0.24.0",
     "chalk": "^2.4.1",
     "cita-web3": "^0.5.7",
     "dotenv": "^6.2.0",
