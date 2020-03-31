@@ -4,15 +4,15 @@
 
 The project is based on Node.js and Koa.js development
 
-Test tokens for the developer's CITA test chain ( [https://node.citahub.com](https://node.citahub.com) )
+Test tokens for the developer's CITA test chain ( [http://node.citahub.com](http://node.citahub.com) )
 
-[Project address](https://dapp.citahub.com/faucet/) : <https://dapp.citahub.com/faucet/>
+[Project address](https://faucet.citahub.com/faucet) : <https://faucet.citahub.com/faucet>
 
 [Github repository address](https://github.com/citahub/cita-testnet-faucet.git) : <https://github.com/citahub/cita-testnet-faucet.git>
 
 ### Get test tokens
 
-- After accessing the [page](https://dapp.citahub.com/faucet/) , enter the account address and the correct verification code for the test token.
+- After accessing the [page](https://faucet.citahub.com/faucet) , enter the account address and the correct verification code for the test token.
 - Then click the Get Testnet Token button, the background server will automatically transfer 10,000 tokens to the specified address (10^22 quota)
 
 > Sign in with the Cyton wallet to automatically enter your account address
