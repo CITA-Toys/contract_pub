@@ -46,7 +46,7 @@ const sendNos = async (ctx, address, captcha) => {
     throw 'Verification Code Errors !'
   }
 
-  const res = await transfer(address, '0x021e19e0c9bab24')
+  const res = await transfer(address, '0x021e19e0c9bab2400000')
 
   if (res.status === 'OK') {
     return res
