@@ -4,7 +4,7 @@
 
 The project is based on Node.js and Koa.js development
 
-Test tokens for the developer's CITA test chain ( [http://node.citahub.com](http://node.citahub.com) )
+Test tokens for the developer's CITA test chain ( [https://testnet.citahub.com](https://testnet.citahub.com) )
 
 [Project address](https://faucet.citahub.com/faucet) : <https://faucet.citahub.com/faucet>
 

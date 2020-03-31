@@ -3,7 +3,7 @@
   "name": "CITA Testnet Faucet",
   "blockViewer": "https://etherscan.io/",
   "chainSet": {
-    "1": "http://node.citahub.com"
+    "1": "https://testnet.citahub.com"
   },
   "start_url": "https://dapp.citahub.com/faucet",
   "entry": "https://dapp.citahub.com/faucet"
