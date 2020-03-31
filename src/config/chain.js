@@ -1,4 +1,4 @@
-const CITASDK = require('@cryptape/cita-sdk').default
+const CITASDK = require('@citahub/cita-sdk').default
 require('dotenv').config()
 
 let chain = process.env.CHAIN
@@ -14,7 +14,7 @@ const transaction = {
   nonce: 999999,
   quota: 1000000,
   chainId: 1,
-  version: 1,
+  version: 2,
   validUntilBlock: 999999,
   value: '',
 }
