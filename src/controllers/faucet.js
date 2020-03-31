@@ -2,8 +2,8 @@ const svgCap = require('svg-captcha')
 const transfer = require('../utils/transfer')
 require('dotenv').config()
 
-const microscopeAddr = 'https://microscope.cryptape.com'
-const rebirthAddr = 'https://rebirth.cryptape.com'
+const microscopeAddr = 'https://microscope.citahub.com'
+const rebirthAddr = 'https://rebirth.citahub.com'
 
 const newCaptcha = async (ctx) => {
   const opts = {
