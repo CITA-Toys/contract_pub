@@ -1,4 +1,4 @@
-const CITASDK = require('@cryptape/cita-sdk').default
+const CITASDK = require('@citahub/cita-sdk').default
 require('dotenv').config()
 
 let chain = process.env.CHAIN
