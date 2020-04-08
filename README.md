@@ -4,15 +4,15 @@
 
 The project is based on Node.js and Koa.js development
 
-Test tokens for the developer's CITA test chain ( [https://node.cryptape.com](https://node.cryptape.com) )
+Test tokens for the developer's CITA test chain ( [https://testnet.citahub.com](https://testnet.citahub.com) )
 
-[Project address](https://dapp.cryptape.com/faucet/) : <https://dapp.cryptape.com/faucet/>
+[Project address](https://faucet.citahub.com/faucet) : <https://faucet.citahub.com/faucet>
 
-[Github repository address](https://github.com/cryptape/cita-testnet-faucet.git) : <https://github.com/cryptape/cita-testnet-faucet.git>
+[Github repository address](https://github.com/citahub/cita-testnet-faucet.git) : <https://github.com/citahub/cita-testnet-faucet.git>
 
 ### Get test tokens
 
-- After accessing the [page](https://dapp.cryptape.com/faucet/) , enter the account address and the correct verification code for the test token.
+- After accessing the [page](https://faucet.citahub.com/faucet) , enter the account address and the correct verification code for the test token.
 - Then click the Get Testnet Token button, the background server will automatically transfer 10,000 tokens to the specified address (10^22 quota)
 
 > Sign in with the Cyton wallet to automatically enter your account address
@@ -22,7 +22,7 @@ Test tokens for the developer's CITA test chain ( [https://node.cryptape.com](ht
 ### Download project
 
 ```
-git clone https://github.com/cryptape/cita-testnet-faucet.git
+git clone https://github.com/citahub/cita-testnet-faucet.git
 ```
 
 ### Installation dependency

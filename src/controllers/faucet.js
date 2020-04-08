@@ -2,8 +2,8 @@ const svgCap = require('svg-captcha')
 const transfer = require('../utils/transfer')
 require('dotenv').config()
 
-const microscopeAddr = 'https://microscope.cryptape.com'
-const rebirthAddr = 'https://rebirth.cryptape.com'
+const microscopeAddr = 'https://microscope.citahub.com'
+const rebirthAddr = 'https://rebirth.citahub.com'
 
 const newCaptcha = async (ctx) => {
   const opts = {
@@ -46,7 +46,7 @@ const sendNos = async (ctx, address, captcha) => {
     throw 'Verification Code Errors !'
   }
 
-  const res = await transfer(address, process.env.TRANSFER_COUNT || '0x021e19e0c9bab24')
+  const res = await transfer(address, '0x021e19e0c9bab2400000')
 
   if (res.status === 'OK') {
     return res

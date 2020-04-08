@@ -4,15 +4,15 @@
 
 该项目基于 Node.js 与 Koa.js 开发
 
-用于提供给开发者 CITA 测试链 ( https://node.cryptape.com ) 的测试用代币
+用于提供给开发者 CITA 测试链 ( https://testnet.citahub.com ) 的测试用代币
 
-[项目地址](https://dapp.cryptape.com/faucet/): https://dapp.cryptape.com/faucet/
+[项目地址](https://faucet.citahub.com/faucet): https://faucet.citahub.com/faucet
 
-[Github 仓库地址](https://github.com/cryptape/cita-testnet-faucet.git): https://github.com/cryptape/cita-testnet-faucet.git
+[Github 仓库地址](https://github.com/citahub/cita-testnet-faucet.git): https://github.com/citahub/cita-testnet-faucet.git
 
 ### 获取测试代币
 
-- 访问[页面](https://dapp.cryptape.com/faucet/)后输入需要获取测试代币的账户地址与正确的验证码
+- 访问[页面](https://faucet.citahub.com/faucet)后输入需要获取测试代币的账户地址与正确的验证码
 
 - 然后点击 Get Testnet Token 按钮, 后台服务器会自动向指定地址转出 10000 个代币(10^22 quota)
 
@@ -23,7 +23,7 @@
 ### 下载项目
 
 ```shell
-git clone https://github.com/cryptape/cita-testnet-faucet.git
+git clone https://github.com/citahub/cita-testnet-faucet.git
 ```
 
 ### 安装依赖
